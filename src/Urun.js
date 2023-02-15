@@ -1,16 +1,23 @@
 import './App.css';
-
 import React, { useEffect, useState } from "react";
+import {Link,useNavigate} from "react-router-dom";
+
 import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
 
 function Urun() {
+  const navigate = useNavigate()
+
   const[allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
- 
+
+    if (!localStorage.getItem("userName"))
+    {
+      navigate('/login', {replace: true});
+    } 
   
     const getAllProductsInfo = async () => {
         let response = await axios.get(
@@ -301,7 +308,7 @@ function Urun() {
             <i className="fa fa-circle" />
           </li>
           <li>
-            <a href="musteri_liste.html">Liste</a>
+            <a href="/urun">Liste</a>
           </li>
         </ul>
         {/* END PAGE BREADCRUMB */}

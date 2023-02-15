@@ -7,10 +7,10 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
 
-function Odeme() {
+function TahsilatTipi() {
   const navigate = useNavigate()
 
-  const[allPayments, setAllPayments] = useState([]);
+  const[allCollectionType, setAllCollectionType] = useState([]);
 
   useEffect(() => {
 
@@ -18,28 +18,26 @@ function Odeme() {
     {
       navigate('/login', {replace: true});
     } 
-  
-    const getAllPaymentsInfo = async () => {
+   
+    const getAllCollectionTypeInfo = async () => {
         let response = await axios.get(
-            'https://private-dfab49-nursenozcan.apiary-mock.com/Odeme'
+            'https://private-dfab49-nursenozcan.apiary-mock.com/TahsilatTipi'
             );
     
-          //  console.log("getAllPaymentInfo" + response.data.OdemeList);
+            //console.log("getAllCollectionTypeInfo" + response.data.TahsilatTipiList);
 
-            setAllPayments(response.data.OdemeList);
+            setAllCollectionType(response.data.TahsilatTipiList);
 
     }
- 
-
 
     // call the function
-    getAllPaymentsInfo().catch(console.error);
+    getAllCollectionTypeInfo().catch(console.error);
  
   }, [])
 
-    return (
+
+  return (
   
-    
    <>
 
   <Header />
@@ -52,7 +50,7 @@ function Odeme() {
         {/* BEGIN PAGE TITLE */}
         <div className="page-title">
           <h1>
-            Ödeme <small>Liste</small>
+            Tahsilat Tipi <small>Liste</small>
           </h1>
         </div>
         {/* END PAGE TITLE */}
@@ -300,15 +298,15 @@ function Odeme() {
         {/* BEGIN PAGE BREADCRUMB */}
         <ul className="page-breadcrumb breadcrumb">
           <li>
-            <a href="#">Operasyon</a>
+            <a href="#">Ekran İçerikleri</a>
             <i className="fa fa-circle" />
           </li>
           <li>
-            <a href="#">Ödeme</a>
+            <a href="#">Tahsilat Tipi</a>
             <i className="fa fa-circle" />
           </li>
           <li>
-            <Link to="/Odeme">Liste</Link>
+            <Link to="/tahsilattipi">Liste</Link>
           </li>
         </ul>
         {/* END PAGE BREADCRUMB */}
@@ -326,7 +324,7 @@ function Odeme() {
                 <div className="caption">
                   <i className="fa fa-cogs font-green-sharp" />
                   <span className="caption-subject font-green-sharp bold uppercase">
-                    ÖDEME LİSTESİ
+                    TAHSİLAT TİPİ LİSTESİ
                   </span>
                 </div>
                 <div className="tools">
@@ -339,26 +337,16 @@ function Odeme() {
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Kime</th>
-                        <th>Tutar</th>
-                        <th>Para Birimi</th>
-                        <th>Ödeme Tarihi</th>
-                        <th>Ödeme Kanalı</th>
-                        <th>Açıklama</th>
+                        <th>Tahsilat Tipi</th>
                       </tr>
                     </thead>
                     <tbody>
                     {
-                      allPayments.map( (data) => ( 
+                      allCollectionType.map( (data) => ( 
                     <> 
                     <tr>
                         <td>1</td>
-                        <td>{data.Kime}</td>
-                        <td>{data.Tutar}</td>
-                        <td>{data.ParaBirimi}</td>
-                        <td>{data.OdemeTarihi}</td>
-                        <td>{data.OdemeKanali}</td>
-                        <td>{data.Aciklama}</td>
+                        <td>{data.TahsilatTipi}</td>
                       </tr>
                     </>
                     )
@@ -386,4 +374,4 @@ function Odeme() {
   );
 }
 
-export default Odeme;
+export default TahsilatTipi;

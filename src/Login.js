@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import {
+  useNavigate
+} from "react-router-dom";
+
 function Login() {
+
+  const navigate = useNavigate();
 
   const[name, setName] = useState(); 
   const[password, setPassword] = useState(); 
@@ -26,27 +32,19 @@ function Login() {
     if (response.data.result=="success") {
           setResult("Giriş Başarılı");
 
+        localStorage.setItem("userName", name)
+        navigate('/musteri', { replace: true });
+
     } else {
           setResult("Hatalı kullanıcı adı veya şifre");
     }
     
     console.log("Resp:" + result);
-    alert(result);
-
-    // if (response.data.result=="success") {
-    //   localStorage.setItem("userName", "onurkulabas")
-    //   navigate('/secret-page', { replace: true });
-    // } else {
-    //   setResult('Hatalı Kullanıcı Adı veya Şifre');
-    // }
-
-
+   
 } 
   
   return (
 
-
-    
   <>
   <div className="login">
         {/* BEGIN BODY */}
