@@ -560,7 +560,7 @@ function Header() {
                       <Link to="/Musteri">Müşteri Listesi </Link>
                     </li>
                     <li className=" ">
-                      <Link to="/musteri_yeni">Yeni Kayıt </Link>
+                      <Link to="/YeniMusteri">Yeni Kayıt </Link>
                     </li>
                   </ul>
                 </li>
