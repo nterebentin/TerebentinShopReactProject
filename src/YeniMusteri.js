@@ -16,7 +16,8 @@ function YeniMusteri() {
     const [address, setAddress] = useState();
     const [city, setCity] = useState();
 
-    const [cities, setCities] = useState([]);
+    const [cities, setCities] = useState([]); // setCities=HOOK
+    const [genders, setGenders] = useState([]);
 
 
     const myButtonClick = async () => {
@@ -43,7 +44,7 @@ function YeniMusteri() {
 
     }
 
-    useEffect(() => {
+    useEffect(() => { //useeffectin içerisine bir fonksiyon yazıp çağırmak önemli bestpractice=en iyi kullanım
 
         if (!localStorage.getItem("userName")) 
         {
@@ -59,13 +60,29 @@ function YeniMusteri() {
 
             setCities(response.data.SehirList);
 
+
+        }   
+        const getGenders = async () => {
+            let response = await axios.get(
+                'https://private-790a01-gender.apiary-mock.com/gender'
+            );
+    
+            // console.log("getAllUserInfo" + response.data.GenderList);
+    
+            setGenders (response.data.GenderList);    
+
         }
 
     // call the function
     getAllCities().catch(console.error);
 
+    // call the function
+    getGenders().catch(console.error);
+
+
 }, [])
 
+ 
 
     return (
 
@@ -395,7 +412,7 @@ function YeniMusteri() {
                                                         <div className="form-group form-md-line-input">
                                                             <label className="col-md-2 control-label" htmlFor="dtBirthDate">Doğum Tarihi</label>
                                                             <div className="col-md-10">
-                                                                <input type="text" className="form-control" id="dtBirthDate" name="dtBirthDate" placeholder="GG/AA/YYYY formatında giriniz" onChange={e => setBirthday(e.target.value)} />
+                                                                <input required autoComplete="off" type="text" className="form-control" id="dtBirthDate" name="dtBirthDate" placeholder="GG/AA/YYYY formatında giriniz" onChange={e => setBirthday(e.target.value)} />
                                                                 <div className="form-control-focus">
                                                                 </div>
                                                             </div>
@@ -404,22 +421,17 @@ function YeniMusteri() {
                                                             <label className="col-md-2 control-label" htmlFor="rdGender">Cinsiyet</label>
                                                             <div className="col-md-10">
                                                                 <div className="md-radio-inline">
+                                                                { 
+                                                                    genders.map((data) => ( 
+
                                                                     <div className="md-radio">
-                                                                        <input type="radio" id="radio53" name="rdGender" className="md-radiobtn" onChange={e => setGender('k')} />
-                                                                        <label htmlFor="radio53">
-                                                                            <span />
-                                                                            <span className="check" />
-                                                                            <span className="box" />
-                                                                            Kadın </label>
+                                                                        <input type="radio" id={data.CinsiyetID} name="rdGender" className="md-radiobtn" onChange={e => setGender(e.target.value)} />
+                                                                        <label htmlFor={data.CinsiyetID}>
+                                                                        <span />
+                                                                        <span className='check' />
+                                                                        <span className='box' /> {data.CinsiyetAdi}{" "} </label>
                                                                     </div>
-                                                                    <div className="md-radio has-error">
-                                                                        <input type="radio" id="radio54" name="rdGender" className="md-radiobtn" onChange={e => setGender('e')} />
-                                                                        <label htmlFor="radio54">
-                                                                            <span />
-                                                                            <span className="check" />
-                                                                            <span className="box" />
-                                                                            Erkek </label>
-                                                                    </div>
+                                                                     ))}
                                                                 </div>
                                                             </div>
                                                         </div>

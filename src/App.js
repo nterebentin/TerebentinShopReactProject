@@ -9,9 +9,11 @@ import AnaSayfa from "./AnaSayfa"
 import Musteri from "./Musteri"
 import YeniMusteri from "./YeniMusteri"
 import Urun from "./Urun"
+import YeniUrun from "./YeniUrun"
 import Siparis from "./Siparis"
 import Tahsilat from "./Tahsilat"
 import Odeme from "./Odeme"
+import YeniOdeme from "./YeniOdeme"
 import Sehir from "./Sehir"
 import SiparisDurumu from "./SiparisDurumu"
 import TahsilatTipi from "./TahsilatTipi"
@@ -28,9 +30,11 @@ function App() {
           <Route path="/Musteri" element={<Musteri />} />
           <Route path="/YeniMusteri" element={<YeniMusteri />} />
           <Route path="/Urun" element={<Urun />} />
+          <Route path="/YeniUrun" element={<YeniUrun />} />
           <Route path="/Siparis" element={<Siparis />} />
           <Route path="/Tahsilat" element={<Tahsilat />} />
           <Route path="/Odeme" element={<Odeme />} />
+          <Route path="/YeniOdeme" element={<YeniOdeme />} />
           <Route path="/Sehir" element={<Sehir />} />
           <Route path="/SiparisDurumu" element={<SiparisDurumu/>} />
           <Route path="/TahsilatTipi" element={<TahsilatTipi/>} />

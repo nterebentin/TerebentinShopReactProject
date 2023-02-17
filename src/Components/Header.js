@@ -467,7 +467,7 @@ function Header() {
                   className="img-circle"
                   src="assets/admin/layout3/img/avatar9.jpg"
                 />
-                <span className="username username-hide-mobile">Nick</span>
+                <span className="username username-hide-mobile">{localStorage.getItem("userName")}</span>
               </a>
               <ul className="dropdown-menu dropdown-menu-default">
                 <li>
