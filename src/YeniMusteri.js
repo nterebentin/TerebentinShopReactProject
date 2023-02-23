@@ -412,7 +412,7 @@ function YeniMusteri() {
                                                         <div className="form-group form-md-line-input">
                                                             <label className="col-md-2 control-label" htmlFor="dtBirthDate">Doğum Tarihi</label>
                                                             <div className="col-md-10">
-                                                                <input required autoComplete="off" type="text" className="form-control" id="dtBirthDate" name="dtBirthDate" placeholder="GG/AA/YYYY formatında giriniz" onChange={e => setBirthday(e.target.value)} />
+                                                                <input required autoComplete="off" type="text" className="form-control" id="dtBirthDate" name="dtBirthDate" placeholder="YYYY-AA-GG formatında giriniz" onChange={e => setBirthday(e.target.value)} />
                                                                 <div className="form-control-focus">
                                                                 </div>
                                                             </div>

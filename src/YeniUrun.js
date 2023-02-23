@@ -7,31 +7,31 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
 
-function YeniMusteri() {
+function YeniUrun() {
     const navigate = useNavigate();
     const [product, setProduct] = useState();
-    const [surproductcode, setProductCode] = useState();
-    const [birthday, setBirthday] = useState();
-    const [gender, setGender] = useState();
-    const [address, setAddress] = useState();
-    const [city, setCity] = useState();
+    const [productcode, setProductCode] = useState();
+    const [productPrice, setProductPrice] = useState();
+    const [currency, setCurrency] = useState();
+    const [stock, setStock] = useState();
+    const [explain, setExplain] = useState();
 
-    const [cities, setCities] = useState([]);
+    const [currencies, setCurrencies] = useState([]);
 
 
     const myButtonClick = async () => {
 
         let requestBody = {
-            MusteriAdi: name,
-            MusteriSoyadi: surname,
-            DogumTarihi: birthday,
-            Cinsiyet: gender,
-            Adres: address,
-            Sehir: city
+            UrunAdi: product,
+            UrunKodu: productcode,
+            UrunFiyati: productPrice,
+            ParaBirimi: currency,
+            StokAdedi: stock,
+            Aciklama: explain
         }
 
         const response = await axios.post(
-            'https://private-d5fb0-nursenozcan.apiary-mock.com/Musteri',
+            'https://private-d5fb0-nursenozcan.apiary-mock.com/Urun',
             requestBody
         );
 
@@ -39,30 +39,26 @@ function YeniMusteri() {
 
         let DonusDegeri = response.data.message;
         alert(DonusDegeri);
-        navigate('/musteri', { replace: true });
+        navigate('/urun', { replace: true });
 
     }
 
     useEffect(() => {
 
-        if (!localStorage.getItem("userName")) 
-        {
-            navigate('/login', { replace: true });
-        }
-
-        const getAllCities = async () => {
+        
+        const getAllCurrencies = async () => {
             let response = await axios.get(
-                'https://private-c58d6-citiestr.apiary-mock.com/citiestr'
+                'https://private-06fa8f-currency16.apiary-mock.com/currency'
             );
 
-           // console.log("getAllUserInfo" + response.data.SehirList);
+           // console.log("getAllCurrencyInfo" + response.data.CurrencyList);
 
-            setCities(response.data.SehirList);
+            setCurrencies(response.data.CurrencyList);
 
         }
 
     // call the function
-    getAllCities().catch(console.error);
+    getAllCurrencies().catch(console.error);
 
 }, [])
 
@@ -81,7 +77,7 @@ function YeniMusteri() {
                         {/* BEGIN PAGE TITLE */}
                         <div className="page-title">
                             <h1>
-                                Müşteri <small>Yeni Kayıt</small>
+                                Ürün <small>Yeni Kayıt</small>
                             </h1>
                         </div>
                         {/* END PAGE TITLE */}
@@ -333,11 +329,11 @@ function YeniMusteri() {
                                 <i className="fa fa-circle" />
                             </li>
                             <li>
-                                <a href="#">Müşteri</a>
+                                <a href="#">Ürün</a>
                                 <i className="fa fa-circle" />
                             </li>
                             <li>
-                                <Link to="/YeniMusteri">Yeni Kayıt</Link>
+                                <Link to="/YeniUrun">Yeni Kayıt</Link>
                             </li>
                         </ul>
                         {/* END PAGE BREADCRUMB */}
@@ -377,71 +373,56 @@ function YeniMusteri() {
                                                 <form role="form" className="form-horizontal">
                                                     <div className="form-body">
                                                         <div className="form-group form-md-line-input">
-                                                            <label className="col-md-2 control-label" htmlFor="txtName">Adı*</label>
+                                                            <label className="col-md-2 control-label" htmlFor="txtProduct">Ürün Adı</label>
                                                             <div className="col-md-10">
-                                                                <input required autoComplete="off" type="text" className="form-control" id="txtName" name="txtName" placeholder="Adınızı yazınız" onChange={e => setName(e.target.value)} />
+                                                                <input required autoComplete="off" type="text" className="form-control" id="txtProduct" name="txtProduct" placeholder="Ürün adını yazınız" onChange={e => setProduct(e.target.value)} />
                                                                 <div className="form-control-focus">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div className="form-group form-md-line-input">
-                                                            <label className="col-md-2 control-label" htmlFor="txtSurname">Soyadı*</label>
+                                                            <label className="col-md-2 control-label" htmlFor="txtProductCode">Ürün Kodu</label>
                                                             <div className="col-md-10" maxLength={50}>
-                                                                <input required autoComplete="off" type="text" className="form-control" id="txtSurname" name="txtSurname" placeholder="Soyadınızı yazınız" maxLength={50} onChange={e => setSurname(e.target.value)} />
+                                                                <input required autoComplete="off" type="text" className="form-control" id="txtProductCode" name="txtProductCode" placeholder="Ürün kodunu yazınız" maxLength={50} onChange={e => setProductCode(e.target.value)} />
                                                                 <div className="form-control-focus">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div className="form-group form-md-line-input">
-                                                            <label className="col-md-2 control-label" htmlFor="dtBirthDate">Doğum Tarihi</label>
+                                                            <label className="col-md-2 control-label" htmlFor="txtProductPrice">Ürün Fiyatı</label>
                                                             <div className="col-md-10">
-                                                                <input type="text" className="form-control" id="dtBirthDate" name="dtBirthDate" placeholder="GG/AA/YYYY formatında giriniz" onChange={e => setBirthday(e.target.value)} />
+                                                                <input type="text" className="form-control" id="txtProductPrice" name="txtProductPrice" placeholder="Ürün fiyatını yazınız" onChange={e => setProductPrice(e.target.value)} />
                                                                 <div className="form-control-focus">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div className="form-group form-md-line-input">
-                                                            <label className="col-md-2 control-label" htmlFor="rdGender">Cinsiyet</label>
+                                                            <label className="col-md-2 control-label" htmlFor="cmbCurrency">ParaBirimi</label>
                                                             <div className="col-md-10">
-                                                                <div className="md-radio-inline">
-                                                                    <div className="md-radio">
-                                                                        <input type="radio" id="radio53" name="rdGender" className="md-radiobtn" onChange={e => setGender('k')} />
-                                                                        <label htmlFor="radio53">
-                                                                            <span />
-                                                                            <span className="check" />
-                                                                            <span className="box" />
-                                                                            Kadın </label>
-                                                                    </div>
-                                                                    <div className="md-radio has-error">
-                                                                        <input type="radio" id="radio54" name="rdGender" className="md-radiobtn" onChange={e => setGender('e')} />
-                                                                        <label htmlFor="radio54">
-                                                                            <span />
-                                                                            <span className="check" />
-                                                                            <span className="box" />
-                                                                            Erkek </label>
-                                                                    </div>
+                                                                <select className="form-control" onChange={e => setCurrency(e.target.value)} id="cmbCurrency" name="cmbCurrency">
+                                                                    <option value={1}>Lütfen seçiniz...</option>
+                                                                {
+                                                                    currencies.map((data) =>(
+                                                                        <option value={data.CurrencyID}>{data.ParaBirimi}</option>
+                                                                    ))
+                                                                }
+                                                                </select>
+                                                                <div className="form-control-focus">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group form-md-line-input">
+                                                            <label className="col-md-2 control-label" htmlFor="txtStock">Stok Adedi</label>
+                                                            <div className="col-md-10" maxLength={50}>
+                                                                <input required autoComplete="off" type="text" className="form-control" id="txtStock" name="txtStock" placeholder="Stok miktarını yazınız" maxLength={50} onChange={e => setStock(e.target.value)} />
+                                                                <div className="form-control-focus">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div className="form-group form-md-line-input has-success">
-                                                            <label className="col-md-2 control-label" htmlFor="txtAddress">Adres</label>
+                                                            <label className="col-md-2 control-label" htmlFor="txtExplain">Açıklama</label>
                                                             <div className="col-md-10">
-                                                                <textarea className="form-control" id="txtAddress" name="txtAddress" rows={3} placeholder="Açık adresinizi yazınız" defaultValue={""} onChange={e => setAddress(e.target.value)} />
-                                                                <div className="form-control-focus">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group form-md-line-input">
-                                                            <label className="col-md-2 control-label" htmlFor="cmbCity">Şehir</label>
-                                                            <div className="col-md-10">
-                                                                <select className="form-control" onChange={e => setCity(e.target.value)} id="cmbCity" name="cmbCity">
-                                                                    <option value={1}>Lütfen seçiniz...</option>
-                                                                {
-                                                                    cities.map((data) =>(
-                                                                        <option value={data.SehirID}>{data.SehirAdi}</option>
-                                                                    ))
-                                                                }
-                                                                </select>
+                                                                <textarea className="form-control" id="txtExplain" name="txtExplain" rows={3} placeholder="Açıklama yazınız" defaultValue={""} onChange={e => setExplain(e.target.value)} />
                                                                 <div className="form-control-focus">
                                                                 </div>
                                                             </div>
@@ -477,4 +458,4 @@ function YeniMusteri() {
     );
 }
 
-export default YeniMusteri;
+export default YeniUrun;

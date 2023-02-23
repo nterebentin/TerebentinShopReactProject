@@ -21,7 +21,7 @@ function Sehir() {
    
     const getAllCityInfo = async () => {
         let response = await axios.get(
-            'https://private-dfab49-nursenozcan.apiary-mock.com/Sehir'
+            'https://private-c58d6-citiestr.apiary-mock.com/citiestr'
             );
     
             //console.log("getAllCityInfo" + response.data.SehirList);
@@ -345,8 +345,8 @@ function Sehir() {
                       allCity.map( (data) => ( 
                     <> 
                     <tr>
-                        <td>1</td>
-                        <td>{data.Sehir}</td>
+                        <td>{data.SehirID}</td>
+                        <td>{data.SehirAdi}</td>
                       </tr>
                     </>
                     )

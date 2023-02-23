@@ -21,12 +21,12 @@ function SiparisDurumu() {
    
     const getAllStatusInfo = async () => {
         let response = await axios.get(
-            'https://private-dfab49-nursenozcan.apiary-mock.com/SiparisDurumu'
+            'https://private-468b48-orderstatus7.apiary-mock.com/siparisdurumu'
             );
     
-            //console.log("getAllStatusInfo" + response.data.SiparisDurumuList);
+            //console.log("getAllStatusInfo" + response.data.OrderStatusList);
 
-            setAllStatus(response.data.SiparisDurumuList);
+            setAllStatus(response.data.OrderStatusList);
 
     }
 
@@ -345,8 +345,8 @@ function SiparisDurumu() {
                       allStatus.map( (data) => ( 
                     <> 
                     <tr>
-                        <td>1</td>
-                        <td>{data.SiparisDurumu}</td>
+                        <td>{data.SiparisDurumuID}</td>
+                        <td>{data.SiparisDurumuAdi}</td>
                       </tr>
                     </>
                     )

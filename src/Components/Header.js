@@ -574,7 +574,7 @@ function Header() {
                       <Link to="/Urun">Ürün Listesi </Link>
                     </li>
                     <li className=" ">
-                      <Link to="/urun_yeni">Yeni Ürün Kaydı </Link>
+                      <Link to="/YeniUrun">Yeni Ürün Kaydı </Link>
                     </li>
                   </ul>
                 </li>
@@ -600,7 +600,7 @@ function Header() {
                       <Link to="/Siparis">Sipariş Listesi </Link>
                     </li>
                     <li className=" ">
-                      <Link to="/siparis_yeni">Yeni Sipariş </Link>
+                      <Link to="/YeniSiparis">Yeni Sipariş </Link>
                     </li>
                   </ul>
                 </li>
@@ -614,7 +614,7 @@ function Header() {
                       <Link to="/Tahsilat">Tahsilat Listesi </Link>
                     </li>
                     <li className=" ">
-                      <Link to="/tahsilat_yeni">Yeni Tahsilat </Link>
+                      <Link to="/YeniTahsilat">Yeni Tahsilat </Link>
                     </li>
                   </ul>
                 </li>
@@ -628,7 +628,7 @@ function Header() {
                       <Link to="/Odeme">Ödeme Listesi </Link>
                     </li>
                     <li className=" ">
-                      <Link to="/odeme_yeni">Yeni Ödeme </Link>
+                      <Link to="/YeniOdeme">Yeni Ödeme </Link>
                     </li>
                   </ul>
                 </li>
@@ -654,7 +654,7 @@ function Header() {
                       <Link to="/siparisdurumu">Liste </Link>
                     </li>
                     <li className=" ">
-                      <Link to="/siparisdurumu_yeni">Yeni </Link>
+                      <Link to="/YeniSiparisdurumu">Yeni </Link>
                     </li>
                   </ul>
                 </li>
@@ -668,7 +668,7 @@ function Header() {
                       <Link to="/sehir">Liste </Link>
                     </li>
                     <li className=" ">
-                      <Link to="/sehir_yeni">Yeni </Link>
+                      <Link to="/YeniSehir">Yeni </Link>
                     </li>
                   </ul>
                 </li>
@@ -682,7 +682,7 @@ function Header() {
                       <Link to="/tahsilattipi">Liste </Link>
                     </li>
                     <li className=" ">
-                      <Link to="/tahsilattipi_yeni">Yeni </Link>
+                      <Link to="/YeniTahsilattipi">Yeni </Link>
                     </li>
                   </ul>
                 </li>
@@ -696,7 +696,7 @@ function Header() {
                       <Link to="/urunkategorisi">Liste </Link>
                     </li>
                     <li className=" ">
-                      <Link to="/urunkategorisi_yeni">Yeni </Link>
+                      <Link to="/YeniUrunkategorisi">Yeni </Link>
                     </li>
                   </ul>
                 </li>
